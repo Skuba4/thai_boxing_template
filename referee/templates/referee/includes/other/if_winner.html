@@ -1,0 +1,11 @@
+{% if fight.winner %}
+    <span class="winner-text">
+        {% if fight.winner == "fighter_1" %}
+            <span class="red-corner">🥇{{ fight.fighter_1 }}🥇</span>
+        {% elif fight.winner == "fighter_2" %}
+            <span class="blue-corner">🥇{{ fight.fighter_2 }}🥇</span>
+        {% elif fight.winner == "draw" %}
+            <span class="draw-text">Ничья</span>
+        {% endif %}
+    </span>
+{% endif %}

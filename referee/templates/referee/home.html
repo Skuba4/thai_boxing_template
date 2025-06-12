@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main>
+        {% if user.is_authenticated %}
+            <p><a class="home_link" href="{% url 'referee:create_room' %}">Создать комнату</a></p>
+            <p><a class="home_link" href="{% url 'referee:my_rooms' %}">Мои комнаты</a></p>
+            <p><a class="home_link" href="{% url 'referee:join_room' %}">Войти в комнату</a></p>
+        {% else %}
+            <h1>Неавторизованный пользователь</h1>
+            <p><a href="{% url 'users:log' %}">Войти</a> или <a href="{% url 'users:reg' %}">Зарегистрироваться</a></p>
+        {% endif %}
+    </main>
+{% endblock %}

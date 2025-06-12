@@ -1,0 +1,55 @@
+services:
+  web:
+    build: .
+    container_name: boxing-web
+    command: [ "/entrypoint.sh" ]
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: postgres:15
+    container_name: boxing-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+
+#  nginx: # PROD
+#    image: nginx:latest
+#    container_name: boxing-nginx
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - ./nginx.prod.conf:/etc/nginx/nginx.conf
+#      - /etc/letsencrypt:/etc/letsencrypt:ro
+#      - static_volume:/app/staticfiles
+#      - media_volume:/app/media
+#    depends_on:
+#      - web
+
+  nginx: #DEV
+    image: nginx:latest
+    container_name: boxing-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

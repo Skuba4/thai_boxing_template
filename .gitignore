@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Logs, databases, media
+*.log
+*.sqlite3
+*.db
+*.bak
+*.swp
+
+# Django
+db.sqlite3
+*.pot
+*.mo
+
+# Virtual environments
+venv/
+env/
+.venv/
+../venv/
+../avenv/
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.docker
+docker-compose.override.yml
+
+# Env
+.env
+
+# Migrations cache
+*/migrations/__pycache__/
+*/migrations/*.py[cod]
+
+# Docker volumes/build
+__docker_build__/

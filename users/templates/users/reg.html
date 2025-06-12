@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main>
+        <h1>Регистрация</h1>
+        <form action="#" method="POST" enctype="multipart/form-data" class="form-container auth-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Регистрация</button>
+        </form>
+    </main>
+{% endblock %}

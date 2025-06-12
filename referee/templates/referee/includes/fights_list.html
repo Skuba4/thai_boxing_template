@@ -1,0 +1,30 @@
+<div id="fight-list" data-uuid="{{ uuid }}">
+    <h4>Список боев</h4>
+    {% for fight in fights %}
+        <div class="fight" data-fight-id="{{ fight.uuid }}">
+            <p class="fight-info">
+                <span class="fight-number">{{ fight.number_fight }}</span>:
+                <span class="fighter-1">{{ fight.fighter_1 }}</span> vs
+                <span class="fighter-2">{{ fight.fighter_2 }}</span>
+                <span class="fight-links">
+                {% if is_boss %}
+                    <a href="#" id="link" class="editFight" data-id="{{ fight.uuid }}">изменить</a>
+                    <a href="#" id="link" class="deleteFight" data-id="{{ fight.uuid }}">удалить</a>
+                    <a href="#" id="link" class="viewFightNotes" data-id="{{ fight.uuid }}">записки</a>
+                    <a href="#" id="link" class="finalDecision" data-id="{{ fight.uuid }}">победитель</a>
+                    {% include 'referee/includes/other/if_winner.html' %}
+                {% elif is_active_judge %}
+                    {% if not fight.winner %}
+                        {% include 'referee/includes/other/if_notes.html' %}
+                    {% else %}
+                        {% include 'referee/includes/other/if_winner.html' %}
+                    {% endif %}
+                {% else %}
+                    <a href="#" id="link" class="viewFightNotes" data-id="{{ fight.uuid }}">Записки</a>
+                    {% include 'referee/includes/other/if_winner.html' %}
+                {% endif %}
+                </span>
+            </p>
+        </div>
+    {% endfor %}
+</div>

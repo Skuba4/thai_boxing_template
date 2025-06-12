@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main>
+        <h1>Мои комнаты</h1>
+        <hr class="hr-divider">
+        {% if object %}
+            <div class="room-list">
+                {% include 'referee/includes/room_list.html' %}
+            </div>
+        {% else %}
+            <p>У вас пока нет созданных комнат.</p>
+        {% endif %}
+        <hr class="hr-divider">
+    </main>
+
+    {% load static %}
+    <script src="{% static 'referee/js/delete_room.js' %}"></script>
+
+{% endblock %}
