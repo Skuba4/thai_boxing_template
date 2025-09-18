@@ -1,0 +1,10 @@
+{% for room in object %}
+    <div class="room" data-room-id="{{ room.uuid_room }}">
+        <p class="room-info">
+            <a href="{{ room.get_absolute_url }}" class="room-name">{{ room.name }}</a>
+            <span class="room-links">
+            <a href="#" id="link" class="deleteRoom" data-uuid="{{ room.uuid_room }}">удалить</a>
+        </span>
+        </p>
+    </div>
+{% endfor %}

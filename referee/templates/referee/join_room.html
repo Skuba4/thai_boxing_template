@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main>
+        <form method="POST" class="form-container room-entry-form">
+            {% csrf_token %}
+            <label for="uuid_room">Введите UUID:</label>
+            <input type="text" name="uuid_room" id="uuid_room" required>
+            <button type="submit">Войти в комнату</button>
+        </form>
+    </main>
+{% endblock %}

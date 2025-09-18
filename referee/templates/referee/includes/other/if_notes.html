@@ -1,0 +1,18 @@
+<span class="notes-links">
+    {% for fight_data in fights_data %}
+        {% if fight_data.fight == fight %}
+            {% if not fight_data.round_1 %}
+                <a href="#" id="link" class="viewNotes" id="notes-round-1-{{ fight.uuid }}" data-id="{{ fight.uuid }}"
+                   data-round="1">1 раунд</a>
+            {% endif %}
+            {% if not fight_data.round_2 %}
+                <a href="#" id="link" class="viewNotes" id="notes-round-2-{{ fight.uuid }}" data-id="{{ fight.uuid }}"
+                   data-round="2">2 раунд</a>
+            {% endif %}
+            {% if not fight_data.round_3 %}
+                <a href="#" id="link" class="viewNotes" id="notes-round-3-{{ fight.uuid }}" data-id="{{ fight.uuid }}"
+                   data-round="3">3 раунд</a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</span>

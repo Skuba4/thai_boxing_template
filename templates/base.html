@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THAI BOXING</title>
+    <link rel="icon" href="{% static 'logo/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notes.css' %}">
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'referee:home' %}">Главная</a></li>
+            <li><a href="{% url 'users:reg' %}">Регистрация</a></li>
+            {% if user.is_authenticated %}
+                <form class="logout-form" action="{% url 'users:logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-button">Выйти</button>
+                </form>
+                <li class="user">({{ user.username }})</li>
+            {% else %}
+                <li><a href="{% url 'users:log' %}">Войти</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+{% block content %}{% endblock %}
+</body>
+
+</html>
